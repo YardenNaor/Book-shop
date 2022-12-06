@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+
+<body onload="onInit()">
+    <h1>Welcome to my bookshop</h1>
+    <section class="book-filter">
+        <h2>Filter</h2>
+        <form onsubmit="onSetFilterByName(event)">
+            <input type="text" name="search-box" placeholder="Search"></input>
+            <button>Search</button>
+        </form>
+        <label>
+            Max Price:
+            <input type="range" min="1" max="100" value="100" class="filter-price-range"
+                onchange="this.title=this.value;onSetFilterBy({maxPrice: this.value})" />
+        </label>
+        <label>
+            Min Rate:
+            <input type="range"  min="0" max="10" value="0" class="filter-rate-range"
+                onchange="this.title=this.value;onSetFilterBy({minRate: this.value})" />
+        </label>
+    </section>
+    <p class="create-book" onclick="onAddBook()">Create new book</p>
+    <section class="table-container">
+        <table border="1">
+            <thead class="keys-container">
+            </thead>
+            <tbody class="books-container"></tbody>
+        </table>
+    </section>
+    <div class="modal">
+        <h3></h3>
+        <h4>Price <span></span> </h4>
+        <h5>Book Description</h5>
+        <p></p>
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+    <div class="page-runner">
+        <button onclick="onSetPage('backward')">Previous Page</button>
+        <div class="current-page"></div>
+        <button onclick="onSetPage('forward')">Next Page</button>
+    </div>
+    <div class="user-msg"></div>
+
+    <script src="js/util.service.js"></script>
+    <script src="js/storage.service.js"></script>
+    <script src="js/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+</body>
+
+</html>
